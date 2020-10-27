@@ -9,16 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ramonsnellink/ramon_snellink-galgje.git"
+    "url": "git+https://github.com/ramonsnellink/ramon_snellink-TDD_groentetuin.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ramonsnellink/ramon_snellink-galgje/issues"
+    "url": "https://github.com/ramonsnellink/ramon_snellink-TDD_groentetuin/issues"
   },
-  "homepage": "https://github.com/ramonsnellink/ramon_snellink-galgje#readme",
+  "homepage": "https://github.com/ramonsnellink/ramon_snellink-TDD_groentetuin#readme",
   "devDependencies": {
-    "jest": "^26.6.0"
+    "jest": "^26.6.1"
   }
 }
