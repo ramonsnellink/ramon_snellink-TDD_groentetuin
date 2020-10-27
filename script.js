@@ -5,12 +5,9 @@ const wordList = ["vis", "toeter", "developer", "telefoon", "moeder", "snoer", "
 let maxAmount = 5;
 
 let word;
-const wordpicker = (list) => {
-  let word = "sinaasappel";
-  let index = Math.floor(Math.random() * list.length);
-  const x = list;
-  console.log("wat ben ik?", word);
-  return x[index];
+const pickRandomWord = (wordList) => {
+  let index = Math.floor(Math.random() * wordList.length);
+  return wordList[index];
 };
 
 let inputs;
@@ -58,7 +55,8 @@ const letters = (word, inputs) => {
   document.querySelector(".guessed_letters").innerHTML = wrongLetters.join(" ");
 };
 
-const theWord = (word, inputLetterWords) => {
+const doesWordContainLetter = (word, inputLetterWords) => {
+  console.log(word, inputLetterWords);
   let display = word.map((letter) => {
     if (inputLetterWords.includes(letter)) {
       return letter;
@@ -66,8 +64,15 @@ const theWord = (word, inputLetterWords) => {
       return "_";
     }
   });
-  document.querySelector(".the_word").innerHTML = display.join(" ");
+  return display;
+  // dit moet naar een nieuwe functie.. !!
+  // document.querySelector(".the_word").innerHTML = display.join(" ");
 };
+
+// const renderWord = (wordArray) => {
+
+//   document.querySelector(".the_word").innerHTML = wordArray.join(" ");
+// }
 
 const guessLetter = () => {
   if (gameOver) {
@@ -86,7 +91,7 @@ const guessLetter = () => {
   }
 
   inputs.push(input1);
-  theWord(word, inputs);
+  doesWordContainLetter(word, inputs);
   letters(word, inputs);
 
   if (wordGuessed(word, inputs)) {
@@ -109,7 +114,9 @@ function beginTheGameWithPlayer(player1) {
   document.querySelector(".lose").style.display = "none";
   document.querySelector("input").value = "";
 
-  word = wordpicker(wordList).split("");
+  word = pickRandomWord(wordList).split("");
+  console.log(word);
+
   document.querySelector(".lose p span").innerHTML = `"${word.join("")}"`;
   word;
 
@@ -117,7 +124,7 @@ function beginTheGameWithPlayer(player1) {
   document.querySelector(".lives span").innerHTML = 5 - 0;
 
   inputs = [];
-  theWord(word, inputs);
+  doesWordContainLetter(word, inputs);
   letters(word, inputs);
 }
 
@@ -126,3 +133,5 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".restart").addEventListener("click", beginTheGameWithPlayer);
   beginTheGameWithPlayer();
 });
+
+module.exports = { pickRandomWord, doesWordContainLetter };
